@@ -1,39 +1,54 @@
-var couchbase = require('couchbase');
-var ACCOUNT = require( '../config.js' ).database.ACCOUNT;
-var TOKEN = require( '../config.js' ).database.TOKEN;
+var util = require('../utils/util.js');
 
+var couchbase = require('../database/couchbase.js');
+var accountBucket = couchbase.get('account');
+var tokenBuket = couchbase.get('token');
 
-var bucket = new couchbase.Connection(ACCOUNT, function(err) {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log('Couchbase Connected');
-
-		bucket.set('kestse', {}, function(err, result){
-			console.log(err);
-		});
-	}
-});
-
-
-
-
-exports.isExists = function( username,  callback ) {
-	// do something
+exports.isExists = function( data,  callback ) {
 	var exists = false;
-	callback( exists );
+	var aid = util.generateAId( data );
+
+	accountBucket.get( aid, function(error, result) {
+		if( error && error.code === 13 ) {
+			exists = false;
+		} else {
+			exists = true;
+		}
+
+		callback( exists );
+	});
 };
 
-exports.register = function( username, callback ) {
-	// do something
-	var aid = 'testaid123';
-	callback( aid );
+exports.register = function( data, callback ) {
+	var aid = util.generateAId( data );
+
+	data.create_at = new Date();
+	data.device = '';
+	data.delete_flg = '';
+
+	accountBucket.set( aid, data, function(error, result) {
+		if( error ) {
+
+		} else {
+
+		}
+
+		callback( aid );
+	});
+
 };
 
-exports.updateToken = function( aid, callback ) {
-	// do something
+exports.updateToken = function( json, callback ) {
+	var token = {};
 
-	var token = 'testtoken123';
+	token.create_at = new Date();
+	token.update_at = new Date();
+	token.token = util.generateToken(json);
+
+	tokenBuket.set( json.aid, token, function(error, result) {
+		
+	});
+
 	callback( token );
 };
 
