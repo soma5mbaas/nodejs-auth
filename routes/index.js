@@ -5,7 +5,7 @@ var account = require('../controllers/account.js');
 
 
 // POST 
-router.put('/account', account.Sign );
+router.post('/account', account.Sign );
 
 // PUT
 
