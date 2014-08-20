@@ -4,11 +4,11 @@
         "buckets": [
             {
                 "bucket": "account",
-                "host": "localhost:8091",
+                "host": "localhost:8091"
             },
             {
                 "bucket": "token",
-                "host": "localhost:8091",
+                "host": "localhost:8091"
             }
         ]
     },
@@ -21,4 +21,3 @@
         "port": 8000
     }
 }
-

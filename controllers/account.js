@@ -1,7 +1,7 @@
 
 var async = require('async');
 var Account = require('../handlers/accountHandler');
-var config = require('../config.js');
+var config = require('../config');
 
 // timeZone: The current time zone where the target device is located.
 // deviceType: The type of device, "ios", "android", "winrt", "winphone", or "dotnet"(readonly).

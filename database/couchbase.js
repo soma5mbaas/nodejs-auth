@@ -1,5 +1,5 @@
 var couchbase = require('couchbase');
-var BUCKETS = require('../config.js').database.buckets;
+var BUCKETS = require('../config').database.buckets;
 
 function DB() {
 	var self = this;
