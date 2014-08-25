@@ -10,6 +10,14 @@ router.post('/account', account.Sign );
 // PUT
 
 // GET
+router.get('/health', function(req, res) {
+	res.json({
+		pid: process.pid,
+		memory: process.memoryUsage(),
+		uptime: process.uptime()
+	});
+});
+
 
 // DELTE
 
