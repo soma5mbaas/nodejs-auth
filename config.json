@@ -13,11 +13,12 @@
         ]
     },
     "write_server": {
-        "host": "localhost", 
-        "port": 8000
+        "host": "localhost:8000" 
     },
     "read_server": {
-        "host": "localhost", 
-        "port": 8000
+        "host": "localhost:8000"
+    },
+    "static_server": {
+        "host": "localhost:8000"
     }
 }
