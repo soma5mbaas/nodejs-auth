@@ -38,8 +38,8 @@ exports.Sign = function ( req, res ) {
 	input.api = getAPIInfo( req );
 	input.aid = req.body.aid;
 
-	output.write_server = global.config.write_server;
-	output.read_server = global.config.read_server;
+	output.write_server = config.write_server;
+	output.read_server = config.read_server;
 
 
 	function done( error, data ) {

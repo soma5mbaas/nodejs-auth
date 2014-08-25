@@ -1,5 +1,5 @@
 var couchbase = require('couchbase');
-var BUCKETS = global.config.database.buckets;
+var BUCKETS = config.database.buckets;
 
 function DB() {
 	var self = this;
