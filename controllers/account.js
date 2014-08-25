@@ -1,7 +1,6 @@
 
 var async = require('async');
 var Account = require('../handlers/accountHandler');
-var config = require('../config');
 
 // timeZone: The current time zone where the target device is located.
 // deviceType: The type of device, "ios", "android", "winrt", "winphone", or "dotnet"(readonly).
@@ -39,8 +38,8 @@ exports.Sign = function ( req, res ) {
 	input.api = getAPIInfo( req );
 	input.aid = req.body.aid;
 
-	output.write_server = config.write_server;
-	output.read_server = config.read_server;
+	output.write_server = global.config.write_server;
+	output.read_server = global.config.read_server;
 
 
 	function done( error, data ) {
