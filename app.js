@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var app = express();
 
+process.env.TZ = 'Asia/Seoul';
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
