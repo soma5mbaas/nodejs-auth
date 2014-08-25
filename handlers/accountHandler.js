@@ -39,17 +39,18 @@ exports.register = function( data, callback ) {
 };
 
 exports.updateToken = function( json, callback ) {
-	var token = {};
+	var info = {};
 
-	token.create_at = new Date();
-	token.update_at = new Date();
-	token.token = util.generateToken(json);
+	info.create_at = new Date();
+	info.update_at = new Date();
+	info.token = util.generateToken(json);
+	info.aid = json.aid;
 
-	tokenBuket.set( json.aid, token, function(error, result) {
-		
+	tokenBuket.set( info.token, info, function(error, result) {
+
 	});
 
-	callback( token );
+	callback( info.token );
 };
 
 
