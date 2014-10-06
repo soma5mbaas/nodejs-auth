@@ -17,6 +17,7 @@
     "couchbase": "^1.2.4",
     "debug": "^1.0.4",
     "express": "~4.2.0",
+    "haru-nodejs-util": "0.0.5",
     "uid2": "0.0.3"
   },
   "main": "app.js",

@@ -1,6 +1,7 @@
 
 var async = require('async');
 var Account = require('../handlers/accountHandler');
+var getHeader = require('haru-nodejs-util').common.getHeader;
 
 // timeZone: The current time zone where the target device is located.
 // deviceType: The type of device, "ios", "android", "winrt", "winphone", or "dotnet"(readonly).
@@ -30,12 +31,11 @@ function getAPIInfo( req ) {
 };
 
 exports.Sign = function ( req, res ) {
-	var input = {};
+	var input = getHeader(req);
 	var output = {};
 
-	input.application_id = req.get('Application-Id');
 	input.user_id = req.get('User-Id');
-	input.api = getAPIInfo( req );
+
 	input.aid = req.body.aid;
 
 	output.write_server = config.write_server;
@@ -43,7 +43,7 @@ exports.Sign = function ( req, res ) {
 
 
 	function done( error, data ) {
-		res.json( output );
+		res.jsonp( output );
 	};
 
 	async.series([
