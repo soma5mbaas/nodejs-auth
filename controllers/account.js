@@ -38,9 +38,9 @@ exports.Sign = function ( req, res ) {
 
 	input.aid = req.body.aid;
 
-	output.write_server = config.write_server;
-	output.read_server = config.read_server;
-
+	output.writeServer = config.writeServer;
+	output.readServer = config.readServer;
+	output.pushServer = config.pushServer;
 
 	function done( error, data ) {
 		res.jsonp( output );

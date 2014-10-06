@@ -12,10 +12,15 @@
             }
         ]
     },
-    "write_server": {
+    "writeServer": {
         "host": "localhost:8000" 
     },
-    "read_server": {
+    "readServer": {
         "host": "localhost:7000"
+    },
+    "pushServer": {
+        "mqtt": {
+            "host": "localhost:1883"
+        }
     }
 }
