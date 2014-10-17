@@ -41,44 +41,47 @@ exports.Sign = function ( req, res ) {
 	output.writeServer = config.writeServer;
 	output.readServer = config.readServer;
 	output.pushServer = config.pushServer;
+    output.userServer = config.userServer;
 
-	function done( error, data ) {
-		res.jsonp( output );
-	};
+    res.json(output);
 
-	async.series([
-			// block 유저인가?
-			function block(callback) {
-				callback();
-			},
-			//  이미 가입한 회원인지 확인 
-			function isExists(callback) {
-				Account.isExists( input, function(exists) {
-					output.isNewUser = !exists;
-					callback();
-				});
-			},
-			// 신규 유저는 가입시킴 
-			function register(callback) {
-				if( output.isNewUser ) {
-					Account.register( input, function(aid) {
-						output.aid = aid;
-						callback();
-					});
-				} else {
-					// 기존 유저는 aid를 받아온옴 
-					if( input.aid ) {
-						output.aid = input.aid;
-					}
-					callback();
-				}
-			},
-			// aid 로 토큰을 업데이트
-			function updateToken(callback) {
-				Account.updateToken( output, function(token) {
-					output.token = token;
-					callback();
-				});
-			}
-		], done);
+//	function done( error, data ) {
+//		res.jsonp( output );
+//	};
+//
+//	async.series([
+//			// block 유저인가?
+//			function block(callback) {
+//				callback();
+//			},
+//			//  이미 가입한 회원인지 확인
+//			function isExists(callback) {
+//				Account.isExists( input, function(exists) {
+//					output.isNewUser = !exists;
+//					callback();
+//				});
+//			},
+//			// 신규 유저는 가입시킴
+//			function register(callback) {
+//				if( output.isNewUser ) {
+//					Account.register( input, function(aid) {
+//						output.aid = aid;
+//						callback();
+//					});
+//				} else {
+//					// 기존 유저는 aid를 받아온옴
+//					if( input.aid ) {
+//						output.aid = input.aid;
+//					}
+//					callback();
+//				}
+//			},
+//			// aid 로 토큰을 업데이트
+//			function updateToken(callback) {
+//				Account.updateToken( output, function(token) {
+//					output.token = token;
+//					callback();
+//				});
+//			}
+//		], done);
 };
