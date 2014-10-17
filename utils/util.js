@@ -4,15 +4,15 @@ var secret = 'xxx';
 
 // use md5
 exports.generateToken = function( json ) {
-	// var token = md5(json.aid);
-	var token = uid(10);
+    // var token = md5(json.aid);
+    var token = uid(10);
 
-	return token;
+    return token;
 };
 
 
 exports.generateAId = function( data ) {
-	return data.application_id +':'+ data.api.id+':'+ data.api.type + ':' + data.user_id;
+    return data.application_id +':'+ data.api.id+':'+ data.api.type + ':' + data.user_id;
 };
 
 
