@@ -7,6 +7,6 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-app.use('/', routes);
+app.use('/1/', routes);
 
 module.exports = app;
